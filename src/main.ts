@@ -81,9 +81,10 @@ function main(): void
 
 		console.log(`SSH key has been stored to ${dirName} successfully.`);
 	}
-	catch(err)
+	catch(err: unknown)
 	{
-		core.setFailed(err.message);
+		const error = err as Error;
+		core.setFailed(error.message);
 	}
 }
 
